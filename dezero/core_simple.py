@@ -32,12 +32,13 @@ def no_grad():
 class Variable:
     __array_priority__ = 200 # ndarrayのmulよりVariableのrmulの優先度をあげる
 
-    def __init__(self, data):
+    def __init__(self, data, name=None):
         if data is not None:
             if not isinstance(data, np.ndarray):
                 raise TypeError("{} is not supported".format(type(data)))
 
         self.data = data
+        self.name = name
         self.grad = None
         self.creator = None
         self.generation = 0
