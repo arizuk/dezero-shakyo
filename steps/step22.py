@@ -184,11 +184,11 @@ class Neg(Function):
 
 class Add(Function):
     def forward(self, x0, x1):
-        y = x0 - x1
+        y = x0 + x1
         return y
 
     def backward(self, gy):
-        return gy, -gy
+        return gy, gy
 
 class Sub(Function):
     def forward(self, x0, x1):
@@ -196,7 +196,7 @@ class Sub(Function):
         return y
 
     def backward(self, gy):
-        return gy, gy
+        return gy, -gy
 
 class Mul(Function):
     def forward(self, x0, x1):
